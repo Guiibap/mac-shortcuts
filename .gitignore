@@ -2,3 +2,6 @@
 _temporario/
 CONTEXTO-*.md
 CLAUDE.md
+/*.pdf
+/*.md
+!/README.md

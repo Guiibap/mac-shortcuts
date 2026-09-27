@@ -14,8 +14,9 @@ Cada atalho fica em uma pasta própria, com:
 |---|---|---|
 | [Transcrever áudio](transcrever-audio/) | Transcreve áudios e vídeos para `.txt` em português, localmente, com whisper.cpp | Homebrew, `ffmpeg`, `whisper-cpp`, modelo `large-v3-turbo` |
 | [Converter para MP3](converter-para-mp3/) | Converte áudios (inclusive `.ogg`/`.opus` do WhatsApp) para `.mp3` | Homebrew, `ffmpeg` |
+| [Converter PDF para MD](converter-pdf-para-md/) | Converte PDFs para Markdown, localmente: Marker nos PDFs normais, OCR nativo da Apple nos escaneados ou com texto ilegível | Homebrew, `pipx`, `marker-pdf` |
 
-Os dois são **Ações Rápidas do Finder**: selecione os arquivos, clique com o botão direito > **Ações Rápidas** e escolha o atalho.
+Todos são **Ações Rápidas do Finder**: selecione os arquivos, clique com o botão direito > **Ações Rápidas** e escolha o atalho.
 
 ## Requisitos gerais
 
