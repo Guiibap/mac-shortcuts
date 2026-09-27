@@ -174,24 +174,6 @@ function montarMarkdown(linhas) {
 EOF
 }
 
-# Traduz a última barra de progresso do Marker (ex.: "Recognizing Text:  44%") para o texto do ícone.
-# LC_ALL=C: o tail corta no meio dos caracteres da barra de progresso, o que quebra o tr em UTF-8.
-etapa() {
-  local linha rotulo pct
-  linha=$(tail -c 2000 "$1" 2>/dev/null | LC_ALL=C tr '\r' '\n' 2>/dev/null | LC_ALL=C grep -aoE '^[A-Za-z ]+: +[0-9]+%' | tail -1)
-  [ -z "$linha" ] && return
-  rotulo="${linha%%:*}"; pct="${linha##* }"
-  case "$rotulo" in
-    "Recognizing Layout") rotulo="Analisando layout" ;;
-    "Running OCR Error Detection") rotulo="Verificando OCR" ;;
-    "Detecting bboxes") rotulo="Detectando texto" ;;
-    "Recognizing Text") rotulo="Reconhecendo texto" ;;
-    "Recognizing tables") rotulo="Lendo tabelas" ;;
-    *) rotulo="Processando" ;;
-  esac
-  echo "$rotulo $pct"
-}
-
 if ! command -v marker_single >/dev/null 2>&1; then
   osascript -e 'display alert "marker_single não encontrado" message "Instale no Terminal com: pipx install marker-pdf" as critical'
   echo "Falhou: marker_single não encontrado"
@@ -247,8 +229,7 @@ for f in "$@"; do
   saida="$tmpdir/$i"
   md="$saida/$base/$base.md"
   plog="$tmpdir/$i.log"
-  progresso="Carregando modelos"
-  barra "📄 $i/$total · $progresso"
+  barra "📄 $i/$total · Convertendo com o Marker"
   # nice: prioridade menor, para o Mac engasgar menos enquanto o Marker roda.
   # --disable_ocr: o texto já foi validado, então o Marker nunca precisa subir o llama-server.
   nice -n 10 marker_single "$f" --output_dir "$saida" --disable_ocr > "$plog" 2>&1 &
@@ -259,8 +240,7 @@ for f in "$@"; do
       cancelado=1
       break
     fi
-    e=$(etapa "$plog"); [ -n "$e" ] && progresso="$e"
-    barra "📄 $i/$total · $progresso"
+    barra "📄 $i/$total · Convertendo com o Marker"
     sleep 1
   done
   wait $marker_pid; rc=$?; marker_pid=""

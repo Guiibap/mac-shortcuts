@@ -114,7 +114,7 @@ Recomendado: em **Ajustes do Sistema > Privacidade e Segurança > Acesso Total a
 
 1. No Finder, selecione um ou mais PDFs.
 2. Clique com o botão direito > **Ações Rápidas** > **Converter PDF para MD**.
-3. Acompanhe o progresso pelo **ícone na barra de menu**, que mostra o arquivo atual e a etapa (ex.: `📄 1/3 · Carregando modelos` ou `📄 2/3 · OCR página 4/10`). Também aparece uma notificação no início de cada arquivo.
+3. Acompanhe o progresso pelo **ícone na barra de menu**, que mostra o arquivo atual e a etapa (ex.: `📄 1/3 · Convertendo com o Marker` ou `📄 2/3 · OCR página 4/10`). Também aparece uma notificação no início de cada arquivo.
 4. Para parar no meio, clique no ícone da barra de menu > **Cancelar conversão**. Uma conversão em andamento no Marker é descartada, e os arquivos que já terminaram são mantidos.
 5. No fim, aparece uma notificação com o resumo:
 
