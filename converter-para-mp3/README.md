@@ -59,7 +59,7 @@ Recomendado: em **Ajustes do Sistema > Privacidade e Segurança > Acesso Total a
 
 ### 4. Importar o atalho
 
-1. Dê dois cliques no arquivo `Converter para MP3.shortcut`.
+1. Baixe o arquivo [`Converter para MP3.shortcut`](Converter%20para%20MP3.shortcut) (botão **Download** na página do arquivo) e dê dois cliques nele.
 2. Clique em **Adicionar Atalho**.
 
 ## Como usar
@@ -115,5 +115,5 @@ O log é zerado a cada execução, então ele sempre mostra só a última.
 Caso queira recriar ou editar no app Atalhos:
 
 1. **Receber** Arquivos de **Ações Rápidas** (com **Finder** marcado nos detalhes). O tipo é "Arquivos" e não "Mídia" porque o macOS não reconhece `.ogg`/`.opus` como mídia.
-2. **Executar Script de Shell:** Shell `zsh`, Entrada = Entrada do Atalho, Passar entrada = **como argumentos**. O conteúdo é o do arquivo [`script.sh`](script.sh).
+2. **Executar Script de Shell:** Shell `zsh`, Entrada = Entrada do Atalho, Passar entrada = **como argumentos**. O conteúdo é o do arquivo [`script-do-atalho.sh`](script-do-atalho.sh).
 3. **Mostrar Notificação** com o **Resultado do Script de Shell**.

@@ -5,7 +5,7 @@ Coleção de atalhos para o app **Atalhos** (Shortcuts) do macOS.
 Cada atalho fica em uma pasta própria, com:
 
 - `README.md`: o que faz, o que instalar antes e como usar.
-- `script.sh`: o script de shell que roda dentro do atalho, para consulta.
+- `script-do-atalho.sh`: cópia do script de shell que roda dentro do atalho, só para consulta (não instala nada).
 - `.shortcut`: o arquivo assinado, pronto para importar com dois cliques.
 
 ## Atalhos
