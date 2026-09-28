@@ -3,7 +3,7 @@ export LANG="pt_BR.UTF-8" LC_ALL="pt_BR.UTF-8"
 
 # Modelo da OpenRouter usado pelo Marker para revisar a conversão (precisa aceitar imagens
 # e respostas estruturadas). Lista de modelos: https://openrouter.ai/models
-MODELO="openai/gpt-5.6-luna"
+MODELO="openai/gpt-6-luna"
 # Nome do item nas Senhas do macOS (Keychain) que guarda a chave da API da OpenRouter.
 CHAVE_KEYCHAIN="openrouter-api-key"
 

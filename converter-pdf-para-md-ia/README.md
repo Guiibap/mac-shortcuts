@@ -32,7 +32,7 @@ Apresentação.pdf    →  Apresentação (IA)/
 
 ## Custo
 
-O atalho usa o modelo `openai/gpt-5.6-luna`, um dos mais baratos com suporte a imagens: US$ 0,20 por milhão de tokens de entrada e US$ 1,20 por milhão de saída (preço da OpenRouter em setembro de 2026). Cada PDF gera vários pedidos à IA (um por tabela, imagem, página a revisar etc.), então o custo cresce com o tamanho e a complexidade do documento. O gasto por pedido aparece em [openrouter.ai/activity](https://openrouter.ai/activity).
+O atalho usa o modelo `openai/gpt-6-luna`, um dos mais baratos com suporte a imagens: US$ 0,10 por milhão de tokens de entrada e US$ 0,50 por milhão de saída (preço da OpenRouter em setembro de 2026). Cada PDF gera vários pedidos à IA (um por tabela, imagem, página a revisar etc.), então o custo cresce com o tamanho e a complexidade do documento. O gasto por pedido aparece em [openrouter.ai/activity](https://openrouter.ai/activity).
 
 ## Setup rápido
 
@@ -87,7 +87,7 @@ Os modelos do Marker são baixados automaticamente na primeira conversão.
 1. Crie uma conta em [openrouter.ai](https://openrouter.ai).
 2. Adicione créditos em [Settings > Credits](https://openrouter.ai/settings/credits). Alguns dólares bastam para muitos PDFs.
 
-**Mantenha pelo menos US$ 1 de saldo.** O Marker não limita o tamanho das respostas, então a OpenRouter só aceita um pedido se o saldo cobrir a maior resposta possível do modelo (65.536 tokens, cerca de US$ 0,08), mesmo que depois cobre bem menos. Com saldo abaixo disso, os pedidos são recusados com erro 402 e o resumo avisa "Sem créditos na OpenRouter". O mesmo vale para o limite de crédito da chave (passo 5): não deixe abaixo de US$ 1.
+**Mantenha pelo menos US$ 1 de saldo.** O Marker não limita o tamanho das respostas, então a OpenRouter só aceita um pedido se o saldo cobrir a maior resposta possível do modelo (128 mil tokens, cerca de US$ 0,06), mesmo que depois cobre bem menos. Com saldo abaixo disso, os pedidos são recusados com erro 402 e o resumo avisa "Sem créditos na OpenRouter". O mesmo vale para o limite de crédito da chave (passo 5): não deixe abaixo de US$ 1.
 
 ### 5. Criar a chave da API
 
@@ -139,7 +139,7 @@ Com imagens (salvos em pasta): 1
 
 ### Comportamento
 
-- **Modelo:** `openai/gpt-5.6-luna`. Para trocar, edite a variável `MODELO` no início do script, dentro do atalho. O modelo precisa aceitar imagens e respostas estruturadas; veja a [lista de modelos](https://openrouter.ai/models).
+- **Modelo:** `openai/gpt-6-luna`, fixado de propósito (em vez do apelido `~openai/gpt-luna-latest`) para o custo e o resultado não mudarem sem aviso. Para trocar, edite a variável `MODELO` no início do script, dentro do atalho. O modelo precisa aceitar imagens e respostas estruturadas; veja a [lista de modelos](https://openrouter.ai/models).
 - **Falhas da IA:** quando a API limita os pedidos ou demora demais, o atalho tenta de novo até 5 vezes, esperando cada vez mais. Se mesmo assim algum pedido falhar, o Marker continua sem a IA naquele trecho, e o resumo avisa: `A IA falhou em parte da conversão (saldo, rede ou chave; veja o log)`. Se a causa for a chave ou a falta de créditos, o resumo diz qual.
 - **Não sobrescreve:** se já existir `Nome (IA).md` ou a pasta `Nome (IA)/`, o PDF é pulado.
 - **Arquivos que não são PDF** são ignorados. A extensão pode estar em maiúsculas (`.PDF`).
@@ -161,7 +161,7 @@ O log é zerado a cada execução. Ele nunca contém a chave da API.
 | Alerta "Chave da OpenRouter não encontrada" | Chave não salva no Keychain | Refaça o passo 6 |
 | Alerta "Chave da OpenRouter inválida" | Chave salva com espaço, aspas ou quebra de linha | Apague e salve de novo (passo 6), sem espaços |
 | Resumo diz que a OpenRouter recusou a chave | Chave errada, revogada ou colada com erro (erro 401) | Crie outra chave (passo 5) e salve de novo (passo 6) |
-| Resumo diz que não há créditos | Saldo ou limite da chave abaixo de ~US$ 0,08, o necessário para reservar a resposta máxima (erro 402) | Adicione créditos (passo 4) ou aumente o limite da chave |
+| Resumo diz que não há créditos | Saldo ou limite da chave abaixo de ~US$ 0,06, o necessário para reservar a resposta máxima (erro 402) | Adicione créditos (passo 4) ou aumente o limite da chave |
 | Resumo avisa que a IA falhou por outro motivo | Sem internet, modelo fora do ar ou limite de pedidos | Veja as linhas `OpenRouter inference failed` no log e tente de novo |
 | Alerta "marker_single não encontrado" | Marker não instalado ou fora de `~/.local/bin` | Refaça os passos 2 e 3 |
 | Erro dizendo que scripts não são permitidos | Opção desativada no Atalhos | Refaça o passo 7 |
