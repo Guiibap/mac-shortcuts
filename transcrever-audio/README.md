@@ -129,6 +129,6 @@ O log é zerado a cada execução, então ele sempre mostra só a última.
 
 Caso queira recriar ou editar no app Atalhos:
 
-1. **Receber** Arquivos de **Ações Rápidas** (com **Finder** marcado nos detalhes). O tipo é "Arquivos" e não "Mídia" porque o macOS não reconhece `.ogg`/`.opus` como mídia.
+1. **Receber** Mídia de **Ações Rápidas** (com **Finder** marcado nos detalhes). Assim a opção só aparece em arquivos de áudio e vídeo. Se ela não aparecer em `.ogg`/`.opus` (versões antigas do macOS não os reconhecem como mídia), troque o tipo para "Arquivos".
 2. **Executar Script de Shell:** Shell `zsh`, Entrada = Entrada do Atalho, Passar entrada = **como argumentos**. O conteúdo é o do arquivo [`script-do-atalho.sh`](script-do-atalho.sh).
 3. **Mostrar Notificação** com o **Resultado do Script de Shell**.

@@ -12,9 +12,16 @@ LOG="$HOME/Library/Logs/converter-pdf-md-ia.log"
 
 tmpdir=$(mktemp -d)
 STATUS="$tmpdir/status"
+# O Marker sobe servidores de modelo do surya numa sessão separada e os deixa de pé depois que termina
+# (para outras execuções reaproveitarem), ocupando ~1,5 GB cada. Encerra se nenhum outro Marker estiver rodando.
+encerrar_servidores() {
+  pgrep -qf 'bin/marker(_single)?( |$)' && return
+  pkill -f 'surya\.[a-z_.]+\.server'
+}
 limpar() {
-  [ -n "$marker_pid" ] && { pkill -P $marker_pid; kill $marker_pid; } 2>/dev/null
+  [ -n "$marker_pid" ] && { pkill -P $marker_pid; kill $marker_pid; wait $marker_pid; } 2>/dev/null
   [ -n "$barra_pid" ] && kill $barra_pid 2>/dev/null
+  encerrar_servidores
   rm -rf "$tmpdir"
 }
 trap limpar EXIT

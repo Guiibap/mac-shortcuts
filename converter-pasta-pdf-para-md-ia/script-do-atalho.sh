@@ -23,9 +23,16 @@ matar() {
   for c in $(pgrep -P $1); do matar $c; done
   kill $1 2>/dev/null
 }
+# O Marker sobe servidores de modelo do surya numa sessão separada e os deixa de pé depois que termina
+# (para outras execuções reaproveitarem), ocupando ~1,5 GB cada. Encerra se nenhum outro Marker estiver rodando.
+encerrar_servidores() {
+  pgrep -qf 'bin/marker(_single)?( |$)' && return
+  pkill -f 'surya\.[a-z_.]+\.server'
+}
 limpar() {
-  [ -n "$marker_pid" ] && matar $marker_pid
+  [ -n "$marker_pid" ] && { matar $marker_pid; wait $marker_pid 2>/dev/null; }
   [ -n "$barra_pid" ] && kill $barra_pid 2>/dev/null
+  encerrar_servidores
   rm -rf "$tmpdir"
 }
 trap limpar EXIT
