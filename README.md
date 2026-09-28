@@ -14,6 +14,7 @@ Cada atalho fica em uma pasta própria, com:
 |---|---|---|
 | [Transcrever áudio](transcrever-audio/) | Transcreve áudios e vídeos para `.txt` em português, localmente, com whisper.cpp | Homebrew, `ffmpeg`, `whisper-cpp`, modelo `large-v3-turbo` |
 | [Converter para MP3](converter-para-mp3/) | Converte áudios (inclusive `.ogg`/`.opus` do WhatsApp) para `.mp3` | Homebrew, `ffmpeg` |
+| [Converter para WebP](converter-para-webp/) | Converte imagens (JPG, HEIC, PNG, GIF, TIFF) para `.webp` otimizado, sem redimensionar | Homebrew, `webp` |
 | [Converter PDF para MD](converter-pdf-para-md/) | Converte PDFs para Markdown, localmente: Marker nos PDFs normais, OCR nativo da Apple nos escaneados ou com texto ilegível | Homebrew, `pipx`, `marker-pdf` |
 | [Converter PDF para MD (IA)](converter-pdf-para-md-ia/) | Versão de máxima qualidade: Marker com revisão por IA via OpenRouter (envia o PDF para a API, serviço pago). Gera `Nome (IA).md` | Homebrew, `pipx`, `marker-pdf`, conta na OpenRouter com créditos |
 | [Converter pasta de PDFs para MD (IA)](converter-pasta-pdf-para-md-ia/) | Versão em lote do anterior: converte todos os PDFs de uma pasta, com revisão por IA via OpenRouter (serviço pago), para a subpasta `Markdown (IA)` | Homebrew, `pipx`, `marker-pdf`, conta na OpenRouter com créditos |
